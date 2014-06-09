@@ -1,8 +1,6 @@
 heka-zlib
 =========
 
-Heka Zlib Decoder and Filter.
-
 Zlib decoder and filter for [Mozilla Heka](http://hekad.readthedocs.org/)
 
 ZlibDecoder
