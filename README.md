@@ -26,7 +26,10 @@ Config:
     create Fields[Payload] with a json representation
     (see :ref:`field_variables`).
 
-    Interpolated values should be surrounded with `%` signs, for example::
+    Interpolated values should be surrounded with `%` signs::
+
+Example:
+
 	[zlib_decoder]
 	type = "ZlibDecoder"
 
@@ -81,6 +84,7 @@ Config:
 	Since the output of the Payload will be binary after this Filter, you will not get the opportunity to encode the message later.
 	This option will run each Payload through the specified encoder prior to compressing.
 
+Example:
 
 	[filter_zlib]
 	type = "ZlibFilter"
