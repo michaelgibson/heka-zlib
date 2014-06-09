@@ -82,13 +82,13 @@ Config:
 	This option will run each Payload through the specified encoder prior to compressing.
 
 
-[filter_zlib]
-type = "ZlibFilter"
-message_matcher = "Fields[decoded] == 'True'"
-zlib_tag = "compressed"
-flush_interval = 5000
-flush_bytes = 1000000
-encoder = "encoder_json"
+	[filter_zlib]
+	type = "ZlibFilter"
+	message_matcher = "Fields[decoded] == 'True'"
+	zlib_tag = "compressed"
+	flush_interval = 5000
+	flush_bytes = 1000000
+	encoder = "encoder_json"
 
 
 To Build
