@@ -124,7 +124,6 @@ func (f *ZlibFilter) receiver(fr FilterRunner, h PluginHelper, encoder Encoder, 
                         } 
                         pack.Recycle()
                 case <-ticker:
-                        fmt.Println("Timeout")
                         if len(outBatch) > 0 {
                         f.batchChan <- outBatch
                         outBatch = <-f.backChan
