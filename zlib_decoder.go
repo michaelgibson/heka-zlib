@@ -63,10 +63,13 @@ func (ld *ZlibDecoder) Decode(pack *PipelinePack) (packs []*PipelinePack, err er
     b := bytes.NewBufferString(pack.Message.GetPayload())
     r, err := zlib.NewReader(b)
     buf := new(bytes.Buffer)
-    buf.ReadFrom(r)
-    s := buf.String()
 
-    pack.Message.SetPayload(s)
+    if b.Len() > 0 {
+        buf.ReadFrom(r)
+        s := buf.String()
+        pack.Message.SetPayload(s)
+    }
+    
     packs = []*PipelinePack{pack}
 
     return
