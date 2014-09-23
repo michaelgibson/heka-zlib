@@ -63,7 +63,7 @@ func (f *ZlibFilter) committer(fr FilterRunner, h PluginHelper, wg *sync.WaitGro
                 pack := h.PipelinePack(f.msgLoopCount)
                 if pack == nil {
                         fr.LogError(fmt.Errorf("exceeded MaxMsgLoops = %d",
-                                h.PipelineConfig().Globals().MaxMsgLoops))
+                                h.PipelineConfig().Globals.MaxMsgLoops))
             break   
                 }
                 var b bytes.Buffer
