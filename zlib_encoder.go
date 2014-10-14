@@ -12,7 +12,7 @@
 #
 # ***** END LICENSE BLOCK *****/
 
-package encoders
+package zlib
 
 import (
     . "github.com/mozilla-services/heka/pipeline"
