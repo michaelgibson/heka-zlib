@@ -48,7 +48,7 @@ See: https://github.com/michaelgibson/heka-stream-aggregator/blob/master/stream_
 	[multi_decoder.subs.zlib_decoder]
 	type = "ZlibDecoder"
 
-	[multi_decoder.subs.#[split_decoder]
+	[multi_decoder.subs.split_decoder]
 	type = "SplitDecoder"
 	[split_decoder.message_fields]
 	Split = "ok"
