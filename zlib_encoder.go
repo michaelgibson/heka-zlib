@@ -16,8 +16,8 @@ package zlib
 
 import (
     . "github.com/mozilla-services/heka/pipeline"
-	"strings"
-	"time"
+    "strings"
+    "time"
     "bytes"
     "compress/zlib"
 )
@@ -95,7 +95,7 @@ func (pe *ZlibEncoder) Encode(pack *PipelinePack) (output []byte, err error) {
 }
 
 func init() {
-	pipeline.RegisterPlugin("ZlibEncoder", func() interface{} {
+	RegisterPlugin("ZlibEncoder", func() interface{} {
 		return new(ZlibEncoder)
 	})
 }
