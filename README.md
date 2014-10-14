@@ -131,8 +131,6 @@ Config:
 
 Example
 
-.. code-block:: ini
-
 	[zlib_encoder]
 	type = "ZlibEncoder"
 	append_newlines = false
