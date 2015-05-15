@@ -1,7 +1,7 @@
 heka-zlib
 =========
 
-Zlib decoder and filter for [Mozilla Heka](http://hekad.readthedocs.org/)
+Zlib decoder and filter plugins for [Mozilla Heka](http://hekad.readthedocs.org/)
 
 ZlibDecoder
 ===========
