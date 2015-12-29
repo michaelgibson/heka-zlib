@@ -7,7 +7,7 @@ import (
         . "github.com/mozilla-services/heka/pipeline"
         "bytes"
         "compress/zlib"
-        "code.google.com/p/go-uuid/uuid"
+        "github.com/pborman/uuid"
         "sync"
 )
 
@@ -60,7 +60,7 @@ func (f *ZlibFilter) committer(fr FilterRunner, h PluginHelper, wg *sync.WaitGro
         tag = f.ZlibTag
 
         for outBatch = range f.batchChan {
-                pack := h.PipelinePack(f.msgLoopCount)
+                pack, _ := h.PipelinePack(f.msgLoopCount)
                 if pack == nil {
                         fr.LogError(fmt.Errorf("exceeded MaxMsgLoops = %d",
                                 h.PipelineConfig().Globals.MaxMsgLoops))
@@ -122,7 +122,8 @@ func (f *ZlibFilter) receiver(fr FilterRunner, h PluginHelper, encoder Encoder, 
                             }
                             outBytes = outBytes[:0]
                         } 
-                        pack.Recycle()
+                        fr.UpdateCursor(pack.QueueCursor)
+                        pack.Recycle(nil)
                 case <-ticker:
                         if len(outBatch) > 0 {
                         f.batchChan <- outBatch
