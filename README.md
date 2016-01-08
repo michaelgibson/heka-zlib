@@ -60,47 +60,6 @@ See: https://github.com/michaelgibson/heka-stream-aggregator/blob/master/stream_
 	preserve_data = true
 
 
-ZlibFilter
-==========
-NOTE: This is essentially doing the same thing as combining the heka stream aggregator
-https://github.com/michaelgibson/heka-stream-aggregator
-to the EncoderFilter
-https://github.com/michaelgibson/heka-encoder-filter/blob/master/encoder_filter.go
-and using the ZlibEncoder from this repo (See below):
-https://github.com/michaelgibson/heka-zlib/blob/master/zlib_encoder.go
-
-
-The Zlib Filter aggregates the payloads of multiple Heka messages before compressing them into a single Payload and passing it on.
-
-Config: 
-
-- zlib_tag:
-	Since the output of the Payload will be binary after this Filter, you will need some way of identifying the message further down the pipeline.
-	This setting creates a new Heka Field called "ZlibTag" and is given the value of this option. Defaults to "compressed"
-
-- flush_interval: 
-	Interval at which accumulated payloads should be compressed in milliseconds.
-	Defaults to 1000 (i.e. one second)
-
-- flush_bytes:
-	Number of payloads that, if processed, will trigger them to be compressed.
-	Defaults to 10.
-
-- encoder:
-	Since the output of the Payload will be binary after this Filter, you will not get the opportunity to encode the message later.
-	This option will run each Payload through the specified encoder prior to compressing.
-
-Example:
-
-	[filter_zlib]
-	type = "ZlibFilter"
-	message_matcher = "Fields[decoded] == 'True'"
-	zlib_tag = "compressed"
-	flush_interval = 5000
-	flush_bytes = 1000000
-	encoder = "encoder_json"
-
-
 ZlibEncoder
 ==========
 Encodes the payload of a pack into a zlib stream that may be decoded using ZlibDecoder
